@@ -1,0 +1,19 @@
+<?php
+
+	include('dbconnect.php');
+	include('shoppinglist.php');
+	$id= $_REQUEST["shopperID"];
+	$ord= $_REQUEST["order"];
+	$it= $_REQUEST["items"];
+		
+	$sql= "INSERT INTO ` list`(`shopperID`, `order`, `items`) VALUES('".$id."', '".$ord."', '".$it."')";
+
+	if (mysqli_query($conn,$sql)) {
+     header("payment.php");
+} else {
+    echo "Error: " . $sql . "<br>" . $conn->error;
+}
+
+$conn->close();
+	
+?>

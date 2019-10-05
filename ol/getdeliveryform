@@ -1,0 +1,24 @@
+<?php
+
+	include('dbconnect.php');
+	include('travelform.php');
+	$name= $_REQUEST["commuter"];
+	$ema= $_REQUEST["pick"];
+	$drop= $_REQUEST["drop"];
+	$phone=$_REQUEST["number"];
+	$bus=$_REQUEST["bus"];
+	$travell=$_REQUEST["travel"];
+	$tim=$_REQUEST["time"];
+	$seat=$_REQUEST["seat"];
+
+	$sql= "INSERT INTO `form`(`commuterName`, `pickupPoint`, `destination`, `phoneNumber`, `busID`, `travelDate`,`travelTime`, `numberOfSeats`) VALUES('".$name."', '".$ema."', '".$drop."', '".$phone."', '".$bus."','".$travell."','".$tim."','".$seat."')";
+
+	if (mysqli_query($conn,$sql)) {
+     header("payment.php");
+} else {
+    echo "Error: " . $sql . "<br>" . $conn->error;
+}
+
+$conn->close();
+	
+?>
